@@ -21,11 +21,12 @@ export default {
   @import '../assets/style/vars.scss';
 
   main {
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
     background-color: $bg-color;
     .container {
-      width: 70%;
+      width: 75%;
       margin: 0 auto;
+      padding: 80px;
     }
   }
 </style>
