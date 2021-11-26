@@ -1,19 +1,16 @@
 <template>
-<div class="wrapper">
-  <div class="cards-list" v-if="isLoaded">
-    <Card 
-      v-for="(card, index) in cardsToPrint"
-      :key="`card-n-${index}`"
-      :singleCard="card"
-    />
+
+  <div class="wrapper">
+    <div class="cards-list" v-if="isLoaded">
+      <Card 
+        v-for="(card, index) in cardsToPrint"
+        :key="`card-n-${index}`"
+        :singleCard="card"
+      />
+    </div>
+    <Loader  v-else/>
   </div>
 
-  <div v-else class="loader">
-    <h3>Sit tight, the page is loading</h3>
-    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-  </div>
-
-</div>
 </template>
 
 <script>
@@ -21,11 +18,13 @@
 import axios from 'axios';
 
 import Card from './Card.vue'
+import Loader from './Loader.vue'
 
 export default {
   name:'CardsList',
   components: {
-    Card
+    Card,
+    Loader
   },
   mounted(){
     this.callAPI();
@@ -62,74 +61,5 @@ export default {
     flex-wrap: wrap;
   }
 
-  .loader {
-    padding-top: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    h3 {
-      font-size: 24px;
-      color: lighten($primary-color, 30%);
-      font-weight: 400;
-    }
-
-    .lds-ellipsis {
-      display: inline-block;
-      position: relative;
-      width: 80px;
-      height: 80px;
-   }
-    .lds-ellipsis div {
-      position: absolute;
-      top: 33px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: lighten($primary-color, 30%);
-      animation-timing-function: cubic-bezier(0, 1, 1, 0);
-    }
-    .lds-ellipsis div:nth-child(1) {
-      left: 8px;
-      animation: lds-ellipsis1 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(2) {
-      left: 8px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(3) {
-      left: 32px;
-      animation: lds-ellipsis2 0.6s infinite;
-    }
-    .lds-ellipsis div:nth-child(4) {
-      left: 56px;
-      animation: lds-ellipsis3 0.6s infinite;
-    }
-    @keyframes lds-ellipsis1 {
-      0% {
-        transform: scale(0);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-    @keyframes lds-ellipsis3 {
-      0% {
-        transform: scale(1);
-      }
-      100% {
-        transform: scale(0);
-      }
-    }
-    @keyframes lds-ellipsis2 {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(24px, 0);
-      }
-    }
-
-  }
+  
 </style>
