@@ -3,12 +3,24 @@
     <div class="logo">
       <img src="../assets/img/logo-spotify.png" alt="Spotify Logo">
     </div>
+    <Search 
+      @sendSearch="genreToPrint"
+    />
   </header>
 </template>
 
 <script>
+
+import Search from './Search.vue';
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: {Search},
+  data(){
+    return {
+      genreToPrint:''
+    }
+  }
 }
 </script>
 
@@ -20,7 +32,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 15px;
+    padding: 0 30px;
     background-color: $primary-color;
     .logo{
       width: 80px;
