@@ -1,7 +1,9 @@
 <template>
   <div>
-    <Header />
-    <Main />
+    <Header 
+      @sendGenre="getGenre"
+    />
+    <Main :gotGenre="selectedGenre"/>
   </div>
 </template>
 
@@ -15,6 +17,16 @@ export default {
   components: {
     Header,
     Main
+  },
+  data(){
+    return {
+      selectedGenre: 'all'
+    }
+  },
+  methods:{
+    getGenre(genre){
+      this.selectedGenre = genre;
+    }
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="search-menu">
     <select name="search-genres" id="searchGenres"
       v-model="genre"
-      @change="$emit('sendSearch', genreToPrint)"
+      @change="$emit('sendSearch', genre)"
     >
       <option value="all">Scegli un genere</option>
       <option value="rock">Rock</option>
@@ -18,7 +18,6 @@ export default {
   name: 'Search',
   data(){
     return {
-      genreToPrint: '',
       //di default assegno all come value al v-model, in modo che venga visualizzata la prima opzione, che visualizza tutte le cards
       genre:'all'
     }

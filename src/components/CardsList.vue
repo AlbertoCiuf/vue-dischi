@@ -3,7 +3,7 @@
   <div class="wrapper">
     <div class="cards-list" v-if="isLoaded">
       <Card 
-        v-for="(card, index) in cardsToPrint"
+        v-for="(card, index) in filteredCards"
         :key="`card-n-${index}`"
         :singleCard="card"
       />
@@ -26,6 +26,9 @@ export default {
     Card,
     Loader
   },
+  props: {
+    receivedGenre: String
+  },
   mounted(){
     this.callAPI();
   },
@@ -47,6 +50,14 @@ export default {
         console.log(e);
       })
     }
+  },
+  computed:{
+    filteredCards(){
+      if (this.receivedGenre === 'all') return this.cardsToPrint;
+      return this.cardsToPrint.filter(card => {
+        return card.genre.toLowerCase() === this.receivedGenre.toLowerCase();
+      });
+    }
   }
 } 
 </script>
@@ -57,7 +68,6 @@ export default {
 
   .cards-list {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
   }
 

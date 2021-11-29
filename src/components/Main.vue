@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container">
-      <CardsList />
+      <CardsList :receivedGenre="gotGenre"/>
     </div>
   </main>
 </template>
@@ -12,6 +12,9 @@ export default {
   name: 'Main',
   components: {
     CardsList
+  },
+  props:{
+    gotGenre: String
   }
 }
 </script>

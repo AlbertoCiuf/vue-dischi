@@ -4,7 +4,7 @@
       <img src="../assets/img/logo-spotify.png" alt="Spotify Logo">
     </div>
     <Search 
-      @sendSearch="genreToPrint"
+      @sendSearch="sendGenre"
     />
   </header>
 </template>
@@ -16,9 +16,11 @@ import Search from './Search.vue';
 export default {
   name: 'Header',
   components: {Search},
-  data(){
-    return {
-      genreToPrint:''
+  
+  methods:{
+    sendGenre(genreToPrint){
+      console.log(genreToPrint);
+      this.$emit('sendGenre', genreToPrint)
     }
   }
 }
